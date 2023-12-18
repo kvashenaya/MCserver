@@ -29,6 +29,9 @@ let DeadsController = class DeadsController {
     createPosts(createDeadDto) {
         return this.deadService.createDead(createDeadDto);
     }
+    getItemsByDeadId(id) {
+        return this.deadService.getItemsByDeadId(id);
+    }
 };
 __decorate([
     (0, common_1.Get)(),
@@ -51,6 +54,13 @@ __decorate([
     __metadata("design:paramtypes", [dead_dto_1.DeadDto]),
     __metadata("design:returntype", void 0)
 ], DeadsController.prototype, "createPosts", null);
+__decorate([
+    (0, common_1.Get)(':id/items'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], DeadsController.prototype, "getItemsByDeadId", null);
 DeadsController = __decorate([
     (0, common_1.Controller)('deads'),
     __metadata("design:paramtypes", [dead_service_1.DeadsService])

@@ -31,6 +31,17 @@ let DeadsService = class DeadsService {
     findDeadById(id) {
         return this.deadRepository.findOne({ where: { id } });
     }
+    async getItemsByDeadId(id) {
+        const groupedPeople = await this.deadRepository
+            .createQueryBuilder('dead')
+            .leftJoinAndSelect('dead.items', 'item')
+            .select(['dead.id', 'item.dead_id_item', 'item.comment', 'item.duration', 'item.customer'])
+            .getMany();
+        console.log('Grouped People:', groupedPeople);
+        const result = groupedPeople.filter((dead) => +dead.id === id);
+        console.log('Filtered Result:', result);
+        return result.length > 0 ? result[0] : null;
+    }
 };
 DeadsService = __decorate([
     (0, common_1.Injectable)(),

@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
-import { IsNotEmpty, MinLength } from "class-validator";
+import { IsNotEmpty, MinLength, IsNumber, IsOptional } from "class-validator";
 export class DeadDto {
 
+    @IsNumber()
     @IsNotEmpty()
     id: number;
 
@@ -40,9 +41,13 @@ export class DeadDto {
     @MinLength(20)
     bioGeneral: string;
 
-    epitaph: string;
+    @IsOptional()
+    epitaph?: string;
 
-    grounded: string;
-    knownFor: string;   
+    @IsOptional()
+    grounded?: string;
+
+    @IsOptional()
+    knownFor?: string;   
     
 }

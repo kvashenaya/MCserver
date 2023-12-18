@@ -7,4 +7,5 @@ export declare class DeadsService {
     createDead(createDeadDto: DeadDto): Promise<Dead>;
     getDeads(): Promise<Dead[]>;
     findDeadById(id: number): Promise<Dead>;
+    getItemsByDeadId(id: number): Promise<Dead>;
 }

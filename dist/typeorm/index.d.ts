@@ -1,6 +1,8 @@
 import { Post } from './post.entity';
 import { Dead } from './dead.entity';
-declare const entities: (typeof Post | typeof Dead)[];
+import { Item } from './item.entity';
+declare const entities: (typeof Post | typeof Item | typeof Dead)[];
 export { Post };
 export { Dead };
+export { Item };
 export default entities;

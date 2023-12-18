@@ -1,11 +1,14 @@
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer, RequestMethod  } from '@nestjs/common';
 //import { AppController } from './app.controller';
 //import { AppService } from './app.service';
 import { DeadsModule } from './deads/dead.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostsModule } from './posts/post.module';
+import { ItemsModule } from './items/item.module';
 import entities from './typeorm';
+
+import { IpLimiterMiddleware } from './middleware/iprestrainer';
 
 @Module({
   imports: [
@@ -26,8 +29,13 @@ import entities from './typeorm';
     }),
     PostsModule,
     DeadsModule,
+    ItemsModule,
   ],
   controllers: [],
   providers: [],
 }) 
-export class AppModule {} 
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(IpLimiterMiddleware).forRoutes({ path: '*', method: RequestMethod.ALL });
+  }
+}

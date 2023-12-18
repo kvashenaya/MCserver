@@ -6,4 +6,5 @@ export declare class DeadsController {
     getDeads(): Promise<import("../../typeorm").Dead[]>;
     findDeadById(id: number): Promise<import("../../typeorm").Dead>;
     createPosts(createDeadDto: DeadDto): Promise<import("../../typeorm").Dead>;
+    getItemsByDeadId(id: number): Promise<import("../../typeorm").Dead>;
 }

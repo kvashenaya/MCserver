@@ -13,7 +13,7 @@ export declare class DeadDto {
     placeDeath: string;
     bioMain: string;
     bioGeneral: string;
-    epitaph: string;
-    grounded: string;
-    knownFor: string;
+    epitaph?: string;
+    grounded?: string;
+    knownFor?: string;
 }

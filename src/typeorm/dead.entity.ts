@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Item } from './item.entity';
+
 @Entity()
 export class Dead {
   @PrimaryGeneratedColumn({
@@ -94,5 +96,9 @@ export class Dead {
     nullable: false,
     
   })      
-  knownFor: string;   
+  knownFor: string;  
+
+  // @OneToMany(() => Item, item => item.dead)
+  // items: Item[];
+
 }

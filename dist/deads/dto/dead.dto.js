@@ -14,6 +14,7 @@ const class_validator_1 = require("class-validator");
 class DeadDto {
 }
 __decorate([
+    (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", Number)
 ], DeadDto.prototype, "id", void 0);
@@ -51,5 +52,17 @@ __decorate([
     (0, class_validator_1.MinLength)(20),
     __metadata("design:type", String)
 ], DeadDto.prototype, "bioGeneral", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], DeadDto.prototype, "epitaph", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], DeadDto.prototype, "grounded", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], DeadDto.prototype, "knownFor", void 0);
 exports.DeadDto = DeadDto;
 //# sourceMappingURL=dead.dto.js.map

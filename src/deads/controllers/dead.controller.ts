@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Body, Controller, Put, Get, Param, Delete, ParseIntPipe, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { identity } from 'rxjs';
 import { DeadDto } from 'src/deads/dto/dead.dto';
 import { DeadsService } from 'src/deads/services/dead.service';
 
@@ -22,6 +23,12 @@ export class DeadsController {
   createPosts(@Body() createDeadDto: DeadDto) {
     return this.deadService.createDead(createDeadDto);
   }
+
+  @Get(':id/items')
+   getItemsByDeadId(@Param('id', ParseIntPipe) id: number)  {
+    return this.deadService.getItemsByDeadId(id);
+  }
+  
 
   // @Delete('delete/:id')
   //  remove(@Param('id') id: number) {

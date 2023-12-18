@@ -6,7 +6,6 @@ export class PostDto {
     @MinLength(1)
     firstname: string;
 
-    
     @IsNotEmpty()
     @MinLength(1)
     lastname: string;

@@ -12,8 +12,13 @@ const dead_module_1 = require("./deads/dead.module");
 const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
 const post_module_1 = require("./posts/post.module");
+const item_module_1 = require("./items/item.module");
 const typeorm_2 = require("./typeorm");
+const iprestrainer_1 = require("./middleware/iprestrainer");
 let AppModule = class AppModule {
+    configure(consumer) {
+        consumer.apply(iprestrainer_1.IpLimiterMiddleware).forRoutes({ path: '*', method: common_1.RequestMethod.ALL });
+    }
 };
 AppModule = __decorate([
     (0, common_1.Module)({
@@ -35,6 +40,7 @@ AppModule = __decorate([
             }),
             post_module_1.PostsModule,
             dead_module_1.DeadsModule,
+            item_module_1.ItemsModule,
         ],
         controllers: [],
         providers: [],
